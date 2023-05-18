@@ -2,6 +2,7 @@ package com.haojunlcode.customer;
 
 
 
+import com.haojunlcode.exception.ResourceNotFound;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,7 +24,7 @@ public class CustomerService {
     public Customer getCustomer(Integer id){
         return customerDao.selectCustomerById(id)
                 .orElseThrow(//if does not exist throw
-                        () -> new IllegalArgumentException("customer with id [%s] not found" .formatted(id))
+                        () -> new ResourceNotFound("customer with id [%s] not found" .formatted(id))
                 );
     }
 }

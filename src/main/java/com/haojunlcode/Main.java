@@ -14,22 +14,26 @@ import org.springframework.web.context.annotation.RequestScope;
 //@EnableAutoConfiguration
 //@Configuration
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args){
         ConfigurableApplicationContext applicationContext =
-            SpringApplication.run(Main.class, args);
+                SpringApplication.run(Main.class, args);
 
-        //String[] beanDefinitionNames = applicationContext.getBeanDefinitionNames();
-        //for(String beanDefinitionName : beanDefinitionNames){
-        //    System.out.println(beanDefinitionName);
-        //}
+        //printBeans(applicationContext);
     }
-    /*
-    @Bean("Foo")
+
+    public static void printBeans(ConfigurableApplicationContext ctx) {
+       String[] beanDefinitionNames = ctx.getBeanDefinitionNames();
+        for(String beanDefinitionName : beanDefinitionNames){
+            System.out.println(beanDefinitionName);
+        }
+    }
+
+
+    @Bean("Foo")  //create own bean"Foo" in Application context
     @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)//change scope of bean
     @RequestScope()
     public Foo getFoo(){
         return new Foo("Bar");
     }
     record Foo(String name){}
-    */
 }
