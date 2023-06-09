@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("api/v1/customers")
 public class CustomerController {
     private final CustomerService customerService;
 
@@ -19,7 +20,7 @@ public class CustomerController {
             method = RequestMethod.GET
     )//same as @GetMapping("api/v1/customer") */
 
-    @GetMapping("api/v1/customers")
+    @GetMapping
     public List<Customer> getCustomers(){
         return customerService.getAllCustomers();
     }
@@ -29,8 +30,12 @@ public class CustomerController {
             path = "api/v1/customers/{customerId}",//{ } path variable
             method = RequestMethod.GET
     )//same as @GetMapping("api/v1/customer")*/
-    @GetMapping("api/v1/customers/{customerId}")
+    @GetMapping("{customerId}")
     public Customer getCustomer(@PathVariable("customerId") Integer customerId){//capture path variable
         return customerService.getCustomer(customerId);
+    }
+    @PostMapping
+    public void registerCustomer(@RequestBody CustomerRegistrationRequest request){
+        customerService.addCustomer(request);
     }
 }
