@@ -25,13 +25,30 @@ public class CustomerJPADataAccessService implements CustomerDao{
         //return Optional.empty();
     }
 
-    @Override
-    public void insertCustomer(Customer customer) {
-        customerRepository.save(customer);
-    }
 
     @Override
     public boolean existPersonWithEmail(String email) {
         return customerRepository.existsCustomerByEmail(email);
     }
+
+    @Override
+    public boolean existPersonWithId(Integer id) {
+        return customerRepository.existsCustomerById(id);
+    }
+
+
+    @Override
+    public void insertCustomer(Customer customer) {
+        customerRepository.save(customer);
+    }
+    @Override
+    public void deleteCustomerById(Integer id) {
+        customerRepository.deleteById(id);
+    }
+
+    @Override
+    public void updateCustomerById(Customer update) {
+        customerRepository.save(update);//update= add back
+    }
+
 }
