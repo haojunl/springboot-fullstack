@@ -1,5 +1,7 @@
 package com.haojunlcode;
 
+import com.github.javafaker.Faker;
+import com.github.javafaker.Name;
 import com.haojunlcode.customer.Customer;
 import com.haojunlcode.customer.CustomerDao;
 import com.haojunlcode.customer.CustomerRepository;
@@ -14,6 +16,7 @@ import org.springframework.web.context.annotation.RequestScope;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 
 @SpringBootApplication
@@ -31,20 +34,18 @@ public class Main {
     @Bean
     CommandLineRunner runner(CustomerRepository customerRepository){
         return args -> {
-            Customer alex = new Customer(
-                    "Alex",
-                    "alex@gmail.com",
-                    21
+            var faker = new Faker();
+            Name name = faker.name();
+            String firstName = name.firstName();
+            String lastName = name.lastName();
+            Random random = new Random();
+            Customer customer = new Customer(
+                    lastName + firstName,
+                    firstName.toLowerCase() + "." + lastName +"@gmail.com",
+                    random.nextInt(16,99)
 
             );
-            Customer jamila = new Customer(
-                    "jamila",
-                    "jamila@gmail.com",
-                    19
-
-            );
-            List<Customer> customers = List.of(alex, jamila);
-            customerRepository.saveAll(customers);
+            customerRepository.save(customer);
         };
     }
 
