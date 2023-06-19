@@ -44,7 +44,6 @@ class CustomerJDBCDataAccessServiceTest extends AbstractTestcontainers {
     void selectCustomerById() {
         // Given
         String email = FAKER.internet().safeEmailAddress() + "-" + UUID.randomUUID();
-        System.out.println("\n\n\n\n\n\n"+email+"\n\n\n\n");
         Customer customer = new Customer(
                 FAKER.name().fullName(),
                 email,
