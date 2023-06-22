@@ -77,7 +77,7 @@ public class CustomerService {
             throw new RequestValidationException("no data changes found");
         }
 
-        customerDao.updateCustomerById(customer);
+        customerDao.updateCustomer(customer);
     }
 
 }

@@ -59,6 +59,7 @@ public abstract class AbstractTestcontainers {
                 .password(postgreSQLContainer.getPassword())
                 .build();
     }
+    //return DataSource to JdbcTemplate
     protected static JdbcTemplate getJdbcTemplate(){
         return new JdbcTemplate(getDataSource());
     }

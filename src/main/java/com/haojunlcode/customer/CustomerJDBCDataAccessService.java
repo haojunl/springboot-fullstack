@@ -80,7 +80,7 @@ public class CustomerJDBCDataAccessService implements CustomerDao{
     }
 
     @Override
-    public void updateCustomerById(Customer update) {
+    public void updateCustomer(Customer update) {
         if(update.getName()!=null){
             var sql = """
                 UPDATE customer

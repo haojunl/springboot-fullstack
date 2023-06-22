@@ -1,7 +1,6 @@
 package com.haojunlcode.customer;
 
 import com.haojunlcode.AbstractTestcontainers;
-import org.checkerframework.checker.units.qual.C;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -117,7 +116,7 @@ class CustomerJDBCDataAccessServiceTest extends AbstractTestcontainers {
     }
 
     @Test
-    void updateCustomerById_updateName() {
+    void updateCustomer_updateName() {
         // Given
         String email = FAKER.internet().safeEmailAddress() + "-" + UUID.randomUUID();
         Customer customer = new Customer(
@@ -138,7 +137,7 @@ class CustomerJDBCDataAccessServiceTest extends AbstractTestcontainers {
         Customer update = new Customer();//update customer
         update.setId(id);
         update.setName(newName);
-        underTest.updateCustomerById(update);
+        underTest.updateCustomer(update);
         // Then
         Optional<Customer> actual = underTest.selectCustomerById(id);
         assertThat(actual).isPresent().hasValueSatisfying(c -> {
@@ -149,7 +148,7 @@ class CustomerJDBCDataAccessServiceTest extends AbstractTestcontainers {
         });
     }
     @Test
-    void updateCustomerById_updateEmail() {
+    void updateCustomer_updateEmail() {
         // Given
         String email = FAKER.internet().safeEmailAddress() + "-" + UUID.randomUUID();
         Customer customer = new Customer(
@@ -170,7 +169,7 @@ class CustomerJDBCDataAccessServiceTest extends AbstractTestcontainers {
         Customer update = new Customer();//update customer
         update.setId(id);
         update.setEmail(newEmail);
-        underTest.updateCustomerById(update);
+        underTest.updateCustomer(update);
         // Then
         Optional<Customer> actual = underTest.selectCustomerById(id);
         assertThat(actual).isPresent().hasValueSatisfying(c -> {
@@ -181,7 +180,7 @@ class CustomerJDBCDataAccessServiceTest extends AbstractTestcontainers {
         });
     }
     @Test
-    void updateCustomerById_updateAge() {
+    void updateCustomer_updateAge() {
         // Given
         String email = FAKER.internet().safeEmailAddress() + "-" + UUID.randomUUID();
         Customer customer = new Customer(
@@ -202,7 +201,7 @@ class CustomerJDBCDataAccessServiceTest extends AbstractTestcontainers {
         Customer update = new Customer();//update customer
         update.setId(id);
         update.setAge(newAge);
-        underTest.updateCustomerById(update);
+        underTest.updateCustomer(update);
         // Then
         Optional<Customer> actual = underTest.selectCustomerById(id);
         assertThat(actual).isPresent().hasValueSatisfying(c -> {
@@ -213,7 +212,7 @@ class CustomerJDBCDataAccessServiceTest extends AbstractTestcontainers {
         });
     }
     @Test
-    void updateCustomerById_updateAll() {
+    void updateCustomer_updateAll() {
         // Given
         String email = FAKER.internet().safeEmailAddress() + "-" + UUID.randomUUID();
         Customer customer = new Customer(
@@ -235,13 +234,13 @@ class CustomerJDBCDataAccessServiceTest extends AbstractTestcontainers {
         update.setName("foo");
         update.setEmail(UUID.randomUUID().toString());
         update.setAge(99);
-        underTest.updateCustomerById(update);
+        underTest.updateCustomer(update);
         // Then
         Optional<Customer> actual = underTest.selectCustomerById(id);
         assertThat(actual).isPresent().hasValue(update);//compare actual to update
     }
     @Test
-    void updateCustomerById_updateNothing() {
+    void updateCustomer_updateNothing() {
         // Given
         String email = FAKER.internet().safeEmailAddress() + "-" + UUID.randomUUID();
         Customer customer = new Customer(
@@ -260,7 +259,7 @@ class CustomerJDBCDataAccessServiceTest extends AbstractTestcontainers {
         // When
         Customer update = new Customer();//update customer
         update.setId(id);
-        underTest.updateCustomerById(update);
+        underTest.updateCustomer(update);
         // Then
         Optional<Customer> actual = underTest.selectCustomerById(id);
         assertThat(actual).isPresent().hasValueSatisfying( c ->{//compare actual to update
