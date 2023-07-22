@@ -1,0 +1,23 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "haojunlcode-api",
+      "image": "hunam123/haojunlcode-api:latest",
+      "essential": true,
+      "memory": 512,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 8080
+        }
+      ],
+      "environment" : [
+        {
+          "name": "SPRING_DATASOURCE_URL",
+           "value": "jdbc:postgresql://awseb-e-e3eawjwsqi-stack-awsebrdsdatabase-qkwiocbmmjk3.ciyt2ah3j3lx.ca-central-1.rds.amazonaws.com:5432/customer"
+        }
+      ]
+    }
+  ]
+}
