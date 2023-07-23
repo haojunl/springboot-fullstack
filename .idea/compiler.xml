@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="haojunlcode-api (1)" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="haojunlcode-api" target="17" />
+      <module name="spring-boot-example" target="17" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="haojunlcode-api" options="-parameters" />
+      <module name="haojunlcode-api (1)" options="-parameters" />
+      <module name="spring-boot-example" options="" />
+    </option>
+  </component>
+</project>
