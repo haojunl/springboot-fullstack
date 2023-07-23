@@ -19,7 +19,7 @@ target/
 */node_modules
 */.DS_store
 *.iws
-*.iml
+**/*.iml
 *.ipr
 
 ### NetBeans ###
